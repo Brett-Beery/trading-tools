@@ -25,8 +25,14 @@ class EarningsAnalyzer(tk.Tk):
         self.geometry("1100x750")
         self.configure(bg=BG_DARK)
         self.resizable(True, True)
+        self.protocol("WM_DELETE_WINDOW", self._on_close)
         self.current_summary = None
         self._build_ui()
+
+    def _on_close(self):
+        plt.close("all")
+        self.quit()
+        self.destroy()
 
     def _build_ui(self):
         # --- Header ---
