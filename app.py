@@ -222,7 +222,9 @@ class EarningsAnalyzer(tk.Tk):
         self.ax.set_facecolor(BG_LIGHT)
         results = summary["results"]
         dates = [r["date"] for r in results]
+        dates = dates[::-1]
         moves = [r["move_pct"] for r in results]
+        moves = moves[::-1]
         colors = [GREEN if m >= 0 else RED for m in moves]
 
         bars = self.ax.bar(range(len(moves)), moves, color=colors, width=0.6, zorder=3)
